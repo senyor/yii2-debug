@@ -26,11 +26,6 @@
             "yii\\debug\\": ""
         }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "master"
-        }
-    },
     "repositories": [
         {
             "type": "composer",
