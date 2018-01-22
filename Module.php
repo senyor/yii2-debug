@@ -186,7 +186,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
      */
     public function bootstrap($app)
     {
-        $this->logTarget = $app->getLog()->targets[$this->id] = new LogTarget($this);
+        $this->logTarget = $app->getLog()->targets['debug'] = new LogTarget($this);
 
         // delay attaching event handler to the view component after it is fully configured
         $app->on(Application::EVENT_BEFORE_REQUEST, function () use ($app) {
@@ -294,7 +294,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
 
         /* @var $view View */
         $view = $event->sender;
-        echo $view->renderDynamic('return Yii::$app->getModule("' . $this->id . '")->getToolbarHtml();');
+        echo $view->renderDynamic('return Yii::$app->getModule(\'debug\')->getToolbarHtml();');
 
         // echo is used in order to support cases where asset manager is not available
         echo '<style>' . $view->renderPhpFile(__DIR__ . '/assets/toolbar.css') . '</style>';
